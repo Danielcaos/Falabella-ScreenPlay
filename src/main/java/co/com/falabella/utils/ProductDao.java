@@ -2,6 +2,7 @@ package co.com.falabella.utils;
 
 import co.com.falabella.models.Product;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ProductDao {
@@ -20,6 +21,26 @@ public class ProductDao {
         } catch (SQLException e) {
             return false;
         }
+
+    }
+
+    public String buscar(int id) throws SQLException {
+        String sql = "SELECT product FROM search WHERE id= "+"'"+id+"'";
+
+        String product = "";
+
+        try {
+
+            ResultSet ps = con.query(sql);
+
+            if(ps.next()){
+                product = ps.getString("product");
+            }
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return product;
     }
 
 }
