@@ -45,7 +45,7 @@ public class RandomQuantity implements Interaction {
 
         String name = actor.recall("name");
         int quantity = actor.recall("quantity");
-        Product p = new Product(name, quantity);
+        Product p = Product.builder().nombre(name).cantidad(quantity).build();
 
         try {
             pd.insertar(p);
