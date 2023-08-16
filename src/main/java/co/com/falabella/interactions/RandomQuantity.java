@@ -45,10 +45,13 @@ public class RandomQuantity implements Interaction {
 
         String name = actor.recall("name");
         int quantity = actor.recall("quantity");
-        Product p = Product.builder().nombre(name).cantidad(quantity).build();
-
         try {
-            pd.insertar(p);
+            if (pd.product(name)){
+                pd.update(name, quantity);
+            } else {
+                Product p = Product.builder().nombre(name).cantidad(quantity).count(1).build();
+                pd.insertar(p);
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

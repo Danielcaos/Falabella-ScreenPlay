@@ -15,4 +15,6 @@ public class Product {
 
     private int cantidad;
 
+    private int count;
+
 }
