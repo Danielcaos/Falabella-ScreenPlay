@@ -51,9 +51,7 @@ public class ProductDao {
     }
 
 
-
-
-    //Search sql
+    //Search product sql
 
     public String buscar(int id) throws SQLException {
         String sql = "SELECT product FROM search WHERE id= "+"'"+id+"'";
